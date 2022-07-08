@@ -9,7 +9,10 @@ Authors with a book on the New York Times Best Seller list are top performers in
 While much research has been done on the gender wage gap, understanding the gender publishing gap as well as what makes best-selling authors unique is critical to understanding other disparities in the labor force. Our research examines the gender publishing gap among authors with a book on the New York Times Best Seller list (1931-2018) as well as among authors with a published work accepted into the United States Library of Congress (1900-2015). We study this labor market to understand what factors have contributed to women’s success.
 
 
+![alt text](images/LCC_BS_31-10_FIC.png)
 ![alt text](images/Fiction_Genre_Combined_Without_Missings.png)
+
+
 
 ## Getting Started
 

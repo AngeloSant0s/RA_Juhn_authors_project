@@ -14,7 +14,7 @@ While much research has been done on the gender wage gap, understanding the gend
 ### Dependencies
 
 * All code was written in python 3 
-* ex. Windows 10
+
 
 
 ## Authors

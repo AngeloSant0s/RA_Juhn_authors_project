@@ -1,57 +1,35 @@
-# RA_Juhn_authors_project
+# RA Juhn Authors Project
 
-
-Simple overview of use/purpose.
+This repository contains projects related to research assistant work for Professor Chinhui Juhn at the University of Houston - Department of Economics
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Authors with a book on the New York Times Best Seller list are top performers in the publishing industry. Recently, bestselling authors are one of the few high-profile professions with gender parity. Most other high earning or top performing careers are male dominated (CEOs, lawyers, surgeons, etc.) thus achieving gender parity in among the top one percent of a labor market is a rare phenomenon. Additionally, the gender composition of authors whose books were accepted into the United States Library of Congress under the fiction genre reached gender parity around 2008. 
+
+While much research has been done on the gender wage gap, understanding the gender publishing gap as well as what makes best-selling authors unique is critical to understanding other disparities in the labor force. Our research examines the gender publishing gap among authors with a book on the New York Times Best Seller list (1931-2018) as well as among authors with a published work accepted into the United States Library of Congress (1900-2015). We study this labor market to understand what factors have contributed to women’s success.
+
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
+* All code was written in python 3 
 * ex. Windows 10
 
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
 
 ## Authors
 
 Contributors names and contact info
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+ex. Jordan Holbrook - jcholbrook@uh.edu
+ex. Angelo Santos - afdossan@CougarNet.UH.EDU
+
 
 ## Version History
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
 * 0.1
     * Initial Release
 
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
 ## Acknowledgments
 

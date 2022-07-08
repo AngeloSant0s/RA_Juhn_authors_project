@@ -19,10 +19,8 @@ While much research has been done on the gender wage gap, understanding the gend
 
 ## Authors
 
-Contributors names and contact info
-
-ex. Jordan Holbrook - jcholbrook@uh.edu
-ex. Angelo Santos - afdossan@CougarNet.UH.EDU
+* Jordan Holbrook - jcholbrook@uh.edu
+* Angelo Santos - afdossan@CougarNet.UH.EDU
 
 
 ## Version History

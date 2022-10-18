@@ -38,6 +38,8 @@ While much research has been done on the gender wage gap, understanding the gend
 * 0.1
     * Initial Release
 
+## Codes Readmes:
+* [Plotting codes](RA_Juhn_authors_project/codes/plots/shares/shares_codes.md)
 
 ## Acknowledgments
 

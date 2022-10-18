@@ -1,4 +1,4 @@
-# This file just describes the shares plotting codes and gives an example of the output
+# Shares plotting codes and outputs
 
 * **p_female_shares_loc.py** 
 

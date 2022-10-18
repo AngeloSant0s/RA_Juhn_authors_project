@@ -1,0 +1,11 @@
+-------------------------------------------------- NY BEST SELLERS DATA --------------------------------------------------
+------------------------ DATASETS ------------------------ 
+
+RA_Juhn_book_list.xls      			----- Original data
+Books1.xls                 			----- Original data with ISBN and LCCN
+NY_BOOKS.xls               			----- Marc files NY BS
+RA_Juhn_genre_condensed_Marc_files.xls		----- Marc books
+Copy of authors_data_full.xlsx                  ----- Authors dataset - Merged on: author_id with Book_view_all_info_flagged.tsv
+
+
+------------------------ FILTERS LABELS ------------------

@@ -1,0 +1,78 @@
+-------------------------------------------------- LCC DATA --------------------------------------------------
+------------------------ DATASETS ------------------------ 
+
+marc_RE.pkl            ----- This data included the cities regular expression
+marc_country_nb.pkl    ----- This data included the cities RE and country
+marc_nb_T_CSP.pkl      ----- This data included the country filters (Cities, State and Country)
+countries_nb_RE.pkl    ----- This data included country filters score (Cities, State and Country)
+chunk_nb_FIC.pkl       ----- This data included fiction, non-fiction, LCC and DDC filter; and LCC categories 
+                             + Countries, cities and state filters
+USA_LCC.pkl            ----- This data is the chunk_nb_FIC.pkl for USA_filter == 1
+demo_nb.pkl            ----- This data include demo info from oclc authorities and id from LC
+demo_nb_viaf.pkl       ----- This data is demo_nb + demo info from viaf 
+
+-------------------------
+marc_part_#
+
+------------------------ CODES DESCRIPTION ------------------
+
+USA_LCC.py          ----- This code will filter the sample to USA books using our USA_filter == 1 
+			     + fiction, non-fiction, LCC and DDC filter 
+scrap_multi.py      ----- This code will get demographics info from id identification and demographics from worldcat 
+new_code_wikipedia  ----- This code does the wikipedia scrapping process
+
+
+ 
+
+------------------------ FILTERS LABELS ------------------
+
+------- USA Filters
+USA: State identifier
+RE_USAC: Country identifier
+RE_USA: City identifier
+RE_USA_10000: City identifier for 10 thousand threshold
+RE_USA_50000: City identifier for 50 thousand threshold
+RE_USA_100000: City identifier for 100 thousand threshold
+USA_filter: Country of the book following the score (sum of country, cities and state filters) criteria
+           - score >= 3
+           - score = 1
+                   -> Country and state = 1
+           - score = 1 
+                   -> Country = 1
+                   -> State = 1
+
+------- Fiction Filters
+g_sh_fic: genre and subhead LCC have 'Fiction' 
+DDC_fic: DDC equal to 813, 823, 833,..., 883
+LCC_fic: First letter of LCC is equal to P
+LCC_gen_CATEGORY: Follow this categories -> https://www.loc.gov/catdir/cpso/lcco/
+
+
+# =============================================================================
+#  Literary/None Definition 1 (Broadest)
+#    -  A book is classified as Literary if it is fiction (fic_score==1) 
+#     and all the fiction genre dummies sum to zero (fic_counts=0). This groups all the books with no genre 
+#        information as literary also
+#        
+#  Literary / None Definition 2 (Narrow)
+#      - A book is classified as literary if it is fiction and all the fic genre
+#       dummies sum to 0, and the genre_info variable is equal to 1. 
+#       (Excludes Books with Missing Genre information)
+# =============================================================================
+
+
+(df['fic_score']==1)   Classified as a fiction book
+(df['fic_counts']!=0)  From the Genre Information we were able to classify at least one genre
+(df['genre_info']==1)  Genre Information Exists in the Record
+
+
+
+9/27/2022
+
+We have a problem with the other fiction category. The other fiction category was
+supposed to be mutually exclusive from the literary category, but the error is 
+that they are overlapping. This is the error in the code,  df['fic_counts'] = df.iloc[:,11:20].sum(axis=1)
+The row sum that is supposed to create the fic counts variable is not including the other fiction genre category.
+Thus, other and literary 1 are overlapping instead of being distinct.
+
+0.209385

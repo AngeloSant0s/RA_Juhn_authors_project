@@ -357,14 +357,21 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-two-scales-one-plot">
-     2. Plotting two scales - One plot
+    <a class="reference internal nav-link" href="#plotting-two-scales">
+     2. Plotting two scales
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-two-scales-separated-plots">
-     Plotting two scales - Separated plots
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#one-plot">
+       2.1. One plot
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#separated-plot">
+       2.2 Separated plot
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -403,14 +410,21 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-two-scales-one-plot">
-     2. Plotting two scales - One plot
+    <a class="reference internal nav-link" href="#plotting-two-scales">
+     2. Plotting two scales
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting-two-scales-separated-plots">
-     Plotting two scales - Separated plots
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#one-plot">
+       2.1. One plot
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#separated-plot">
+       2.2 Separated plot
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -487,8 +501,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 </section>
-<section id="plotting-two-scales-one-plot">
-<h3>2. Plotting two scales - One plot<a class="headerlink" href="#plotting-two-scales-one-plot" title="Permalink to this headline">#</a></h3>
+<section id="plotting-two-scales">
+<h3>2. Plotting two scales<a class="headerlink" href="#plotting-two-scales" title="Permalink to this headline">#</a></h3>
+<section id="one-plot">
+<h4>2.1. One plot<a class="headerlink" href="#one-plot" title="Permalink to this headline">#</a></h4>
 <p>In this section, we will plot the female shares and the genre share for each year. We will plot these values in two scales graph, where the left y-axis is female share and the right x-axis is the genre share.</p>
 <p>Firs, we create a list with all the genres that we have use to categorize the fiction books.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fics</span> <span class="o">=</span> <span class="p">[</span>
@@ -554,8 +570,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </section>
-<section id="plotting-two-scales-separated-plots">
-<h3>Plotting two scales - Separated plots<a class="headerlink" href="#plotting-two-scales-separated-plots" title="Permalink to this headline">#</a></h3>
+<section id="separated-plot">
+<h4>2.2 Separated plot<a class="headerlink" href="#separated-plot" title="Permalink to this headline">#</a></h4>
 <p>The following, plots a figure for each fiction genre.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fics</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s1">&#39;Action/Adventure&#39;</span><span class="p">,</span> 
@@ -601,6 +617,7 @@ title="Print to PDF"
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 </section>

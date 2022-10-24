@@ -80,7 +80,8 @@ plt.close()
 ```
 
 
-### 2. Plotting two scales - One plot
+### 2. Plotting two scales
+#### 2.1. One plot
 
 In this section, we will plot the female shares and the genre share for each year. We will plot these values in two scales graph, where the left y-axis is female share and the right x-axis is the genre share. 
 
@@ -150,7 +151,7 @@ plt.savefig('p_2sca.png')
 plt.close()
 ```
 
-### Plotting two scales - Separated plots
+#### 2.2 Separated plot
 
 The following, plots a figure for each fiction genre. 
 

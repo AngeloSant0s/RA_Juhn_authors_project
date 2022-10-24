@@ -78,7 +78,10 @@ plt.savefig('p_female_shares.png')
 plt.close()
 })
 ```
-
+This will produce the following figure
+```{figure} images/p_female_shares.png
+:name: figure-example
+```
 
 ### 2. Plotting two scales
 #### 2.1. One plot
@@ -151,6 +154,11 @@ plt.savefig('p_2sca.png')
 plt.close()
 ```
 
+This will produce the following figure
+```{figure} images/p_2sca.png
+:name: figure-example
+```
+
 #### 2.2 Separated plot
 
 The following, plots a figure for each fiction genre. 
@@ -200,8 +208,10 @@ for f in fics:
     plt.close()
 ```
 
-
-
+This will produce the following figure
+```{figure} images/p_2sca_Romance.png
+:name: figure-example
+```
 
 
 

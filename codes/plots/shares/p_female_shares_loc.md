@@ -35,7 +35,8 @@ import p_func_female_shares_loc as pf
 **p_func_female_shares_loc** is a file with the functions used here.
 ```
 
-## Plotting  female shares for actual, fiction and non fiction
+## Plotting  female shares 
+### Plotting for actual, fiction and non-fiction
 
 In this section, we will plot the female shares for each year, dividing in three categories:
 
@@ -63,6 +64,8 @@ fm = fm.rename(columns = {
     'year': 'Year',
     'fs': 'Female Share',
     'genre' : 'Category'
+    }
+
 
 ```
 

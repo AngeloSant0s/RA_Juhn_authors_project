@@ -347,7 +347,12 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#functions">
+   Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
    Plotting  female shares
   </a>
   <ul class="nav section-nav flex-column">
@@ -400,7 +405,12 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#functions">
+   Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
    Plotting  female shares
   </a>
   <ul class="nav section-nav flex-column">
@@ -442,8 +452,8 @@ title="Print to PDF"
 <h1>Plotting female shares<a class="headerlink" href="#plotting-female-shares" title="Permalink to this headline">#</a></h1>
 <p>In this routine we will plot the female share for the <a class="reference external" href="https://www.loc.gov">Library of Congress</a> dataset. We will plot two graphs:</p>
 <ol class="simple">
-<li><p>Female share for fiction, non-fiction and all books</p></li>
-<li><p>Two scale graphs, with female share (left y-axis) and genre share (right x-axis)</p></li>
+<li><p><a class="reference internal" href="#first"><span class="std std-ref">Female share for fiction, non-fiction and all books</span></a></p></li>
+<li><p><a class="reference internal" href="#second"><span class="std std-ref">Two scale graphs, with female share (left y-axis) and genre share (right x-axis)</span></a></p></li>
 </ol>
 <section id="packages-needed">
 <h2>Packages needed<a class="headerlink" href="#packages-needed" title="Permalink to this headline">#</a></h2>
@@ -458,19 +468,253 @@ title="Print to PDF"
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>p_func_female_shares_loc</strong> is a file with the functions used here.</p>
+<p><strong>p_func_female_shares_loc</strong> is a file with the <a class="reference internal" href="#functions"><span class="std std-ref">functions</span></a> used here.</p>
 </div>
 </section>
-<section id="id1">
-<h2>Plotting  female shares<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<section id="functions">
+<span id="id1"></span><h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
+<p>These are the set of functions used in the following routine</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">female_share</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1980</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">2011</span><span class="p">,</span><span class="n">g</span> <span class="o">=</span> <span class="s1">&#39;Actual&#39;</span><span class="p">,</span> <span class="n">user</span> <span class="o">=</span> <span class="s1">&#39;angelosantos&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    This code creates a DataFrame with female shares for three groups:</span>
+<span class="sd">        - All books: Default</span>
+<span class="sd">        - Fiction: g = &#39;Fiction&#39;</span>
+<span class="sd">        - Non Fiction: g = &#39;non Fiction&#39;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        start (int, optional): Starting year. Defaults to 1980.</span>
+<span class="sd">        end (int, optional): Last year. Defaults to 2011.</span>
+<span class="sd">        g (str, optional): Group of books: &#39;Actual&#39;, &#39;Fiction&#39;, &#39;non Fiction&#39;.</span>
+<span class="sd">                            Defaults to &#39;Actual&#39;.</span>
+<span class="sd">        user (str, optional): User identifier to get the right directory. Jordan: &#39;jcholbro&#39;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        DataFrame: DataFrame withe the female shares for group g per year,</span>
+<span class="sd">                    between start and end.</span>
+<span class="sd">                    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="s1">&#39;jcholbro&#39;</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\jcholbro\University Of Houston\Books Project - Generaldata\data_created\full_datasets\loc\merged&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/Users/&#39;</span><span class="o">+</span><span class="n">user</span><span class="o">+</span><span class="s1">&#39;/Library/CloudStorage/OneDrive-SharedLibraries-UniversityOfHouston/Books Project - General/data/data_created/full_datasets/loc/merged&#39;</span><span class="p">)</span>
+    <span class="n">books</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;cre_authors_books_v1.pkl&#39;</span><span class="p">)</span>
+    <span class="n">fr</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">baseline</span> <span class="o">=</span> <span class="n">books</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">books</span><span class="p">[</span><span class="s1">&#39;pub_year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">y</span><span class="p">]</span>                           
+        <span class="k">if</span> <span class="n">g</span> <span class="o">==</span> <span class="s1">&#39;Fiction&#39;</span><span class="p">:</span>                                                     
+            <span class="n">baseline</span> <span class="o">=</span> <span class="n">baseline</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;fic_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">g</span> <span class="o">==</span> <span class="s1">&#39;non Fiction&#39;</span><span class="p">:</span>                                                        
+            <span class="n">baseline</span> <span class="o">=</span> <span class="n">baseline</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;fic_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">fem</span> <span class="o">=</span> <span class="n">baseline</span><span class="p">[</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;gender_combined&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">]</span>          
+        <span class="n">fem_share</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">baseline</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;fs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fem_share</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;genre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span>
+        <span class="n">fr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">fr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">frame</span>
+
+<span class="k">def</span> <span class="nf">genre_share_fic</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1980</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">2011</span><span class="p">,</span> <span class="n">fiction</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">user</span> <span class="o">=</span> <span class="s1">&#39;angelosantos&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    This code creates a DataFrame with genres shares for Fiction and non Fiction</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        start (int, optional): Starting year. Defaults to 1980.</span>
+<span class="sd">        end (int, optional): Last year. Defaults to 2011.</span>
+<span class="sd">        fiction (int, optional): Fiction or Non Fiction genres.</span>
+<span class="sd">        user (str, optional): User identifier to get the right directory. Jordan: &#39;jcholbro&#39;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        DataFrame: DataFrame withe the genre shares for Fiction or non Fiction per year,</span>
+<span class="sd">                    between start and end.</span>
+<span class="sd">                   </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="s1">&#39;jcholbro&#39;</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\jcholbro\University Of Houston\Books Project - Generaldata\data_created\full_datasets\loc\merged&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/Users/&#39;</span><span class="o">+</span><span class="n">user</span><span class="o">+</span><span class="s1">&#39;/Library/CloudStorage/OneDrive-SharedLibraries-UniversityOfHouston/Books Project - General/data/data_created/full_datasets/loc/merged&#39;</span><span class="p">)</span>
+    <span class="n">books</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;cre_authors_books_v1.pkl&#39;</span><span class="p">)</span>
+    <span class="n">fr</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">baseline</span> <span class="o">=</span> <span class="n">books</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">books</span><span class="p">[</span><span class="s1">&#39;pub_year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">y</span><span class="p">]</span>                           
+        <span class="k">if</span> <span class="n">fiction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>                                                      
+            <span class="n">fic</span> <span class="o">=</span> <span class="n">baseline</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;fic_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="s1">&#39;Fiction&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fic</span> <span class="o">=</span> <span class="n">baseline</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;fic_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="s1">&#39;non Fiction&#39;</span>
+        <span class="n">genre_share</span> <span class="o">=</span> <span class="n">fic</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">baseline</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;fs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">genre_share</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;genre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span>
+        <span class="n">fr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">fr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">frame</span>
+   
+
+<span class="k">def</span> <span class="nf">subg_female_share</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1980</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">2011</span><span class="p">,</span> <span class="n">fiction</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="s1">&#39;Romance&#39;</span><span class="p">,</span> <span class="n">user</span> <span class="o">=</span> <span class="s1">&#39;angelosantos&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    This code creates a DataFrame with female shares for subgenres in fiction and non Fiction</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        start (int, optional): Starting year. Defaults to 1980.</span>
+<span class="sd">        end (int, optional): Last year. Defaults to 2011.</span>
+<span class="sd">        fiction (int, optional): Fiction or Non fiction genres.</span>
+<span class="sd">        g (str, optional): Subgenre in Fiction or non Fiction:</span>
+<span class="sd">                            Fiction: </span>
+<span class="sd">                                - &#39;Action/Adventure&#39;</span>
+<span class="sd">                                - &#39;Childrens Stories&#39;</span>
+<span class="sd">                                - &#39;Fantasty/Sci-Fi&#39;</span>
+<span class="sd">                                - &#39;Horror/Paranormal&#39; </span>
+<span class="sd">                                - &#39;Mystery/Crime&#39; </span>
+<span class="sd">                                - &#39;Romance&#39;</span>
+<span class="sd">                                - &#39;Suspence&#39;</span>
+<span class="sd">                                - &#39;Spy/Politics&#39;</span>
+<span class="sd">                                - &#39;Literary_1&#39;</span>
+<span class="sd">                                </span>
+<span class="sd">                            Non Fiction:</span>
+<span class="sd">                                - &#39;LCC_gen_AGRICULTURE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_AUXILIARY SCIENCES OF HISTORY&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_BIBLIOGRAPHY. LIBRARY SCIENCE. INFORMATION RESOURCES (GENERAL)&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_EDUCATION&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_FINE ARTS&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_GENERAL WORKS&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_GEOGRAPHY. ANTHROPOLOGY. RECREATION&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_HISTORY OF THE AMERICAS&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_LAW&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_MEDICINE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_MILITARY SCIENCE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_MUSIC AND BOOKS ON MUSIC&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_NAVAL SCIENCE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_PHILOSOPHY. PSYCHOLOGY. RELIGION&#39;, &#39;LCC_gen_POLITICAL SCIENCE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_SCIENCE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_SOCIAL SCIENCES&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_TECHNOLOGY&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_WORLD HISTORY AND HISTORY OF EUROPE, ASIA, AFRICA, AUSTRALIA, NEW ZEALAND, ETC.&#39;</span>
+
+<span class="sd">        user (str, optional): User identifier to get the right directory. Jordan: &#39;jcholbro&#39;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        DataFrame: DataFrame with the female shares for Fiction or non Fiction for subgenre g per year,</span>
+<span class="sd">                    between start and end.</span>
+<span class="sd">                   </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="s1">&#39;jcholbro&#39;</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\jcholbro\University Of Houston\Books Project - Generaldata\data_created\full_datasets\loc\merged&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/Users/&#39;</span><span class="o">+</span><span class="n">user</span><span class="o">+</span><span class="s1">&#39;/Library/CloudStorage/OneDrive-SharedLibraries-UniversityOfHouston/Books Project - General/data/data_created/full_datasets/loc/merged&#39;</span><span class="p">)</span>
+    <span class="n">books</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;cre_authors_books_v1.pkl&#39;</span><span class="p">)</span>
+    <span class="n">fr</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">baseline</span> <span class="o">=</span> <span class="n">books</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">books</span><span class="p">[</span><span class="s1">&#39;pub_year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">y</span><span class="p">]</span>                           
+        <span class="k">if</span> <span class="n">fiction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>                                                      
+            <span class="n">fic_base</span> <span class="o">=</span> <span class="n">baseline</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;fic_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">fic_base</span> <span class="o">=</span> <span class="n">fic_base</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fic_base</span><span class="p">[</span><span class="s1">&#39;fic_counts&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">]</span>
+            <span class="n">fic</span> <span class="o">=</span> <span class="n">fic_base</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fic_base</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">fem_fic</span> <span class="o">=</span> <span class="n">fic</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fic</span><span class="p">[</span><span class="s1">&#39;gender_combined&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fic_base</span> <span class="o">=</span> <span class="n">baseline</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;fic_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">fic</span> <span class="o">=</span> <span class="n">fic_base</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fic_base</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">fem_fic</span> <span class="o">=</span> <span class="n">fic</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fic</span><span class="p">[</span><span class="s1">&#39;gender_combined&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">]</span>
+        <span class="n">fem_share</span> <span class="o">=</span> <span class="n">fem_fic</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">fic</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;fs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fem_share</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;genre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span>
+        <span class="n">fr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">fr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">frame</span>
+
+<span class="k">def</span> <span class="nf">subgenre_share</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">1980</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">2011</span><span class="p">,</span> <span class="n">fiction</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="s1">&#39;Romance&#39;</span><span class="p">,</span> <span class="n">user</span> <span class="o">=</span> <span class="s1">&#39;angelosantos&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    This code creates a DataFrame with subgenre shares for subgenres in fiction and non Fiction</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        start (int, optional): Starting year. Defaults to 1980.</span>
+<span class="sd">        end (int, optional): Last year. Defaults to 2011.</span>
+<span class="sd">        fiction (int, optional): Fiction or Non fiction genres.</span>
+<span class="sd">        g (str, optional): Subgenre in Fiction or non Fiction:</span>
+<span class="sd">                            Fiction: </span>
+<span class="sd">                                - &#39;Action/Adventure&#39;</span>
+<span class="sd">                                - &#39;Childrens Stories&#39;</span>
+<span class="sd">                                - &#39;Fantasty/Sci-Fi&#39;</span>
+<span class="sd">                                - &#39;Horror/Paranormal&#39; </span>
+<span class="sd">                                - &#39;Mystery/Crime&#39; </span>
+<span class="sd">                                - &#39;Romance&#39;</span>
+<span class="sd">                                - &#39;Suspence&#39;</span>
+<span class="sd">                                - &#39;Spy/Politics&#39;</span>
+<span class="sd">                                - &#39;Literary_1&#39;</span>
+<span class="sd">                                </span>
+<span class="sd">                            Non Fiction:</span>
+<span class="sd">                                - &#39;LCC_gen_AGRICULTURE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_AUXILIARY SCIENCES OF HISTORY&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_BIBLIOGRAPHY. LIBRARY SCIENCE. INFORMATION RESOURCES (GENERAL)&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_EDUCATION&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_FINE ARTS&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_GENERAL WORKS&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_GEOGRAPHY. ANTHROPOLOGY. RECREATION&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_HISTORY OF THE AMERICAS&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_LAW&#39;, &#39;LCC_gen_MEDICINE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_MILITARY SCIENCE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_MUSIC AND BOOKS ON MUSIC&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_NAVAL SCIENCE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_PHILOSOPHY. PSYCHOLOGY. RELIGION&#39;, &#39;LCC_gen_POLITICAL SCIENCE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_SCIENCE&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_SOCIAL SCIENCES&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_TECHNOLOGY&#39;</span>
+<span class="sd">                                - &#39;LCC_gen_WORLD HISTORY AND HISTORY OF EUROPE, ASIA, AFRICA, AUSTRALIA, NEW ZEALAND, ETC.&#39;</span>
+
+<span class="sd">        user (str, optional): User identifier to get the right directory. Jordan: &#39;jcholbro&#39;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        DataFrame: DataFrame with the genre shares for Fiction or non Fiction for subgenre g per year,</span>
+<span class="sd">                    between start and end.</span>
+<span class="sd">                   </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="s1">&#39;jcholbro&#39;</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\jcholbro\University Of Houston\Books Project - Generaldata\data_created\full_datasets\loc\merged&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/Users/&#39;</span><span class="o">+</span><span class="n">user</span><span class="o">+</span><span class="s1">&#39;/Library/CloudStorage/OneDrive-SharedLibraries-UniversityOfHouston/Books Project - General/data/data_created/full_datasets/loc/merged&#39;</span><span class="p">)</span>
+    <span class="n">books</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;cre_authors_books_v1.pkl&#39;</span><span class="p">)</span>
+    <span class="n">fr</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">baseline</span> <span class="o">=</span> <span class="n">books</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">books</span><span class="p">[</span><span class="s1">&#39;pub_year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">y</span><span class="p">]</span>                           
+        <span class="k">if</span> <span class="n">fiction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>                                                      
+            <span class="n">fic_base</span> <span class="o">=</span> <span class="n">baseline</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;fic_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">fic_base</span> <span class="o">=</span> <span class="n">fic_base</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fic_base</span><span class="p">[</span><span class="s1">&#39;fic_counts&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">]</span>
+            <span class="n">fic</span> <span class="o">=</span> <span class="n">fic_base</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fic_base</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fic_base</span> <span class="o">=</span> <span class="n">baseline</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;fic_score&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">fic</span> <span class="o">=</span> <span class="n">fic_base</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fic_base</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">genre_share</span> <span class="o">=</span> <span class="n">fic</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">fic_base</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;fs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">genre_share</span>
+        <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;genre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span>
+        <span class="n">fr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">fr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>Plotting  female shares<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <section id="plotting-for-actual-fiction-and-non-fiction">
-<h3>1. Plotting for actual, fiction and non-fiction<a class="headerlink" href="#plotting-for-actual-fiction-and-non-fiction" title="Permalink to this headline">#</a></h3>
+<span id="first"></span><h3>1. Plotting for actual, fiction and non-fiction<a class="headerlink" href="#plotting-for-actual-fiction-and-non-fiction" title="Permalink to this headline">#</a></h3>
 <p>In this section, we will plot the female shares for each year, dividing in three categories:</p>
-<ol class="simple">
+<ul class="simple">
 <li><p><strong>Actual:</strong> Female shares using all books</p></li>
 <li><p><strong>Fiction:</strong> Female shares in the fiction books samples</p></li>
 <li><p><strong>Non-Fiction:</strong> Female shares in the non-fiction books samples</p></li>
-</ol>
+</ul>
 <p>We will plot these shares for the 1930-2010.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="mi">1930</span>
 <span class="n">end</span> <span class="o">=</span> <span class="mi">2010</span>
@@ -506,7 +750,7 @@ title="Print to PDF"
 </figure>
 </section>
 <section id="plotting-two-scales">
-<h3>2. Plotting two scales<a class="headerlink" href="#plotting-two-scales" title="Permalink to this headline">#</a></h3>
+<span id="second"></span><h3>2. Plotting two scales<a class="headerlink" href="#plotting-two-scales" title="Permalink to this headline">#</a></h3>
 <section id="one-plot">
 <h4>2.1. One plot<a class="headerlink" href="#one-plot" title="Permalink to this headline">#</a></h4>
 <p>In this section, we will plot the female shares and the genre share for each year. We will plot these values in two scales graph, where the left y-axis is female share and the right x-axis is the genre share.</p>
@@ -574,7 +818,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>This will produce the following figure</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <img alt="_images/p_2sca.png" src="_images/p_2sca.png" />
 </figure>
 </section>
@@ -626,7 +870,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>This will produce the following figure</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <img alt="_images/p_2sca_Romance.png" src="_images/p_2sca_Romance.png" />
 </figure>
 </section>

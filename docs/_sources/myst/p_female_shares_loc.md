@@ -22,7 +22,9 @@ In this routine we will plot the female share for the [Library of Congress](http
 
 ## Packages needed
 
-```{code-block}
+```{code-cell}
+:tags: ["hide-cell"]
+
 import os
 import numpy as np
 import pandas as pd
@@ -39,7 +41,9 @@ import p_func_female_shares_loc as pf
 ## Functions
 
 These are the set of functions used in the following routine
-```{code-block}
+```{code-cell}
+:tags: ["hide-input"]
+
 def female_share(start = 1980, end = 2011,g = 'Actual', user = 'angelosantos'):
     """
     
@@ -311,7 +315,7 @@ plt.close()
 })
 ```
 This will produce the following figure
-```{figure} images/p_female_shares.png
+```{figure} ../images/p_female_shares.png
 :name: figure-example
 ```
 
@@ -389,7 +393,7 @@ plt.close()
 ```
 
 This will produce the following figure
-```{figure} images/p_2sca.png
+```{figure} ../images/p_2sca.png
 :name: figure-example
 ```
 
@@ -442,8 +446,8 @@ for f in fics:
     plt.close()
 ```
 
-This will produce the following figure
-```{figure} images/p_2sca_Romance.png
+This will produce the following figure for all the fiction genres. This is the example for romance.
+```{figure} ../images/p_2sca_Romance.png
 :name: figure-example
 ```
 

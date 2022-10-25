@@ -39,7 +39,7 @@ import p_func_female_shares_loc as pf
 ## Functions
 
 These are the set of functions used in the following routine
-```{code-cell}
+```{code-block}
 def female_share(start = 1980, end = 2011,g = 'Actual', user = 'angelosantos'):
     """
     

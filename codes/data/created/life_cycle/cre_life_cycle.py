@@ -57,6 +57,9 @@ lf.reset_index().drop('index', axis = 1)
 
 '''
 
-Now, we can use this data set to plot the graphs
+Now, we can save it and use this data set to plot the graphs
 
 '''
+os.chdir("/Users/angelosantos/Library/CloudStorage/OneDrive-SharedLibraries-UniversityOfHouston/Books Project - General/data/data_created/full_datasets/loc/authors/lifecycles")
+lf.to_pickle('cre_life_cycle_bs.pkl')
+

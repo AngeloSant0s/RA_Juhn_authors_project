@@ -365,6 +365,18 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#plotting-for-actual-fiction-and-non-fiction">
      1. Plotting for actual, fiction and non-fiction
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#library-of-congress">
+       Library of Congress
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#new-york-best-sellers">
+       New York Best sellers
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plotting-two-scales">
@@ -423,6 +435,18 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#plotting-for-actual-fiction-and-non-fiction">
      1. Plotting for actual, fiction and non-fiction
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#library-of-congress">
+       Library of Congress
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#new-york-best-sellers">
+       New York Best sellers
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plotting-two-scales">
@@ -455,7 +479,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="plotting-female-shares">
 <h1>Plotting female shares<a class="headerlink" href="#plotting-female-shares" title="Permalink to this headline">#</a></h1>
-<p>In this routine we will plot the female share for the <a class="reference external" href="https://www.loc.gov">Library of Congress</a> dataset. We will plot two graphs:</p>
+<p>In this routine we will plot the female share for the <a class="reference external" href="https://www.loc.gov">Library of Congress</a> and <a class="reference external" href="https://www.nytimes.com/books/best-sellers/">New York Best sellers</a> dataset. We will plot two graphs:</p>
 <ol class="simple">
 <li><p><a class="reference internal" href="#first"><span class="std std-ref">Female share for fiction, non-fiction and all books</span></a></p></li>
 <li><p><a class="reference internal" href="#second"><span class="std std-ref">Two scale graphs, with female share (left y-axis) and genre share (right x-axis)</span></a></p></li>
@@ -729,6 +753,8 @@ title="Print to PDF"
 <li><p><strong>Fiction:</strong> Female shares in the fiction books samples</p></li>
 <li><p><strong>Non-Fiction:</strong> Female shares in the non-fiction books samples</p></li>
 </ul>
+<section id="library-of-congress">
+<h4>Library of Congress<a class="headerlink" href="#library-of-congress" title="Permalink to this headline">#</a></h4>
 <p>We will plot these shares for the 1930-2010.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="mi">1930</span>
 <span class="n">end</span> <span class="o">=</span> <span class="mi">2010</span>
@@ -759,9 +785,50 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>This will produce the following figure</p>
-<figure class="align-default" id="figure-example">
-<img alt="../_images/p_female_shares.png" src="../_images/p_female_shares.png" />
+<figure class="align-default" id="figure">
+<img alt="../_images/p_female_shares_loc.png" src="../_images/p_female_shares_loc.png" />
 </figure>
+</section>
+<section id="new-york-best-sellers">
+<h4>New York Best sellers<a class="headerlink" href="#new-york-best-sellers" title="Permalink to this headline">#</a></h4>
+<p>We will plot these shares for the 1931-2012. However, this is very noisy, so I did an average using 5 years windows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="mi">1931</span>
+<span class="n">end</span> <span class="o">=</span> <span class="mi">2012</span>
+
+<span class="n">fm</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Actual&#39;</span><span class="p">,</span><span class="s1">&#39;Fiction&#39;</span><span class="p">,</span><span class="s1">&#39;non Fiction&#39;</span><span class="p">]:</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">female_share</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">end</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">fm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">fm</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">fm</span><span class="p">[</span><span class="s1">&#39;fs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fm</span><span class="p">[</span><span class="s1">&#39;fs&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fs&#39;</span><span class="p">:</span> <span class="s1">&#39;Female Share&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;genre&#39;</span> <span class="p">:</span> <span class="s1">&#39;Category&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Creating 5 years groups and taking the mean to plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fm</span><span class="p">[</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">((</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">//</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">fm</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">fm</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">fm</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)),</span> <span class="s1">&#39;groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">i</span>
+
+<span class="n">fm</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span><span class="s1">&#39;groups&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="n">fm</span><span class="p">[[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Female Share&#39;</span><span class="p">,</span><span class="s1">&#39;Category&#39;</span><span class="p">]]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">fm</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">fm</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">palette</span> <span class="o">=</span> <span class="s1">&#39;icefire&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Female share between &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="o">+</span> <span class="s1">&#39; and &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">end</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/Users/angelosantos/Library/CloudStorage/OneDrive-SharedLibraries-UniversityOfHouston/Books Project - General/outputs/plots/shares/ny_bs/female_share&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;p_female_shares.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will produce the following figure</p>
+<figure class="align-default" id="figure-example">
+<img alt="../_images/p_female_shares_bs.png" src="../_images/p_female_shares_bs.png" />
+</figure>
+</section>
 </section>
 <section id="plotting-two-scales">
 <span id="second"></span><h3>2. Plotting two scales<a class="headerlink" href="#plotting-two-scales" title="Permalink to this headline">#</a></h3>

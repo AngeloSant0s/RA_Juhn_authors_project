@@ -1,4 +1,13 @@
+'''
 
+Author: Angelo Santos
+
+This code cleans the new york best sellers dataset (cre_bs_v1.xlsx) to non missing in
+gender and birth year.
+
+The output will be: cre_bs_v2.xlsx
+
+'''
 import os
 import pandas as pd
 

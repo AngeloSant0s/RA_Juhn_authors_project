@@ -1,0 +1,13 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: md/intro
+parts:
+  - caption: Plotting
+    chapters:
+    - file: myst/p_female_shares_intro.md
+      sections:
+      - file: myst/plots/shares/p_female_shares.md
+      - file: myst/plots/two_scales/p_two_scales.md
+

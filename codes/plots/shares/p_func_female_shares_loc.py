@@ -32,7 +32,7 @@ sns.set_context("paper")
 Functions
 
 '''
-def female_share(start = 1980, end = 2011,g = 'Actual', user = 'angelosantos'):
+def female_share(start = 1980, end = 2011,g = 'Actual', user = 'angelosantos', bs = 0):
     """
     
     This code creates a DataFrame with female shares for three groups:
@@ -53,9 +53,14 @@ def female_share(start = 1980, end = 2011,g = 'Actual', user = 'angelosantos'):
                     
     """
     if user == 'jcholbro':
-        os.chdir(r'C:\Users\jcholbro\University Of Houston\Books Project - Generaldata\data_created\full_datasets\loc\merged')
+        os.chdir(r'C:\Users\jcholbro\University Of Houston\Books Project - General\data\data_created\full_datasets\loc\merged')
     os.chdir('/Users/'+user+'/Library/CloudStorage/OneDrive-SharedLibraries-UniversityOfHouston/Books Project - General/data/data_created/full_datasets/loc/merged')
     books = pd.read_pickle('cre_authors_books_v1.pkl')
+    if bs == 1:
+        if user == 'jcholbro':
+            os.chdir(r'C:\Users\jcholbro\University Of Houston\Books Project - General\data\data_created\full_datasets\bs')
+        os.chdir("/Users/angelosantos/Library/CloudStorage/OneDrive-SharedLibraries-UniversityOfHouston/Books Project - General/data/data_created/full_datasets/bs")
+        books = pd.read_excel('cre_bs_v2.xlsx')
     fr = []
     for y in range(start,end):
         fs = {}

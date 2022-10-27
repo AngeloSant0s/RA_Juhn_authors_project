@@ -1,8 +1,8 @@
 # Shares plotting codes and outputs
 
-* **p_female_shares_loc.py** 
+* **p_female_shares_loc.py** and **p_female_shares_bs.py** 
 
-  This code produces the following plots:
+  This code produces the following plots for library of congress (loc) and New York best sellers (bs) :
 
   - The female shares for the all sample, fiction and non fiction books
     <p align="center">

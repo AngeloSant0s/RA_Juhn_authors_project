@@ -1,7 +1,7 @@
 # Life cycles graphs  
 
-* **code name** 
-  This code produces the following graphs:
+* **p_life_cycle_bs.py** and **p_life_cycle_bs.py** 
+  These codes produces the following graphs for NY best sellers (bs) and Library of Congress (loc):
   
   * Probabilities of publishing for male and female separately
      <p align="center">

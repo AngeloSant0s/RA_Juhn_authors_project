@@ -120,7 +120,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../p_female_shares_intro.html">
+  <a class="reference internal" href="../shares/p_female_shares_intro.html">
    Plotting female shares
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -154,6 +154,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="p_life_cycle_bs.html">
      NY best sellers life cycle graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="p_life_cycle_loc.html">
+     Library of Congress life cycle graphs
     </a>
    </li>
   </ul>
@@ -209,6 +214,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AngeloSant0s/authors-project/master?urlpath=tree/docs/myst/plots/life_cycles/p_life_cycle_intro.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -275,6 +309,23 @@ title="Open an issue"
   </button>
   <div class="menu-dropdown__content">
     <ul>
+      <li>
+        <a href="../../../_sources/myst/plots/life_cycles/p_life_cycle_intro.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
       <li>
         <a href="../../../_sources/myst/plots/life_cycles/p_life_cycle_intro.md"
    class="headerbtn"
@@ -404,19 +455,166 @@ title="Print to PDF"
 <p>These graphs will be ploted for three groups: All books, fiction and non fiction.</p>
 <section id="packages-needed">
 <h2>Packages needed<a class="headerlink" href="#packages-needed" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">p_func_life_cycle</span> <span class="k">as</span> <span class="nn">plc</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="to-make-our-graphs-looking-good">
 <h2>To make our graphs looking good<a class="headerlink" href="#to-make-our-graphs-looking-good" title="Permalink to this headline">#</a></h2>
 <p>To make your graphs looking better, we will use some predefined settings. You can customize it as you want. These
 are our settings.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;savefig.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;ticks&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 3200x2400 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>p_func_life_cycle</strong> is a file with the <a class="reference internal" href="#functions"><span class="std std-ref">functions</span></a> used through the routines.</p>
+<p><strong>p_func_life_cycle</strong> is a file with the <a class="reference internal" href="../shares/p_female_shares_intro.html#functions"><span class="std std-ref">functions</span></a> used through the routines.</p>
 </div>
 </section>
 <section id="functions">
 <span id="id1"></span><h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
 <p>These are the set of functions used in the following routine</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lc_cohort</span><span class="p">(</span><span class="n">lc_frame</span> <span class="p">,</span> <span class="n">st</span> <span class="o">=</span> <span class="mi">1900</span><span class="p">,</span> <span class="n">ed</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">15</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    This function creates the cohort variable for the life cycle data</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lc_frame : DataFrame</span>
+<span class="sd">        Life cycle dataframe</span>
+<span class="sd">    st : int, optional</span>
+<span class="sd">        Starting year of birth, by default 1900</span>
+<span class="sd">    ed : int, optional</span>
+<span class="sd">        Last year of birth, by default 2000</span>
+<span class="sd">    size : int, optional</span>
+<span class="sd">        Size of cohorts years window, by default 15</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">        The life cycle DataFrame with a colum that indicates the authors&#39; cohort</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nb_co</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">ed</span><span class="o">-</span><span class="n">st</span><span class="p">)</span><span class="o">/</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_co</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">st</span><span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">size</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">st</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">size</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+        <span class="n">lc_frame</span><span class="p">[</span><span class="s1">&#39;Cohort_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">start</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">end</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">lc_frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">lc_frame</span><span class="p">[</span><span class="s1">&#39;birth_year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">start</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lc_frame</span><span class="p">[</span><span class="s1">&#39;birth_year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">),</span> <span class="s1">&#39;Cohort_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">start</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">+</span><span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">end</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">lc_frame</span>
+
+
+
+<span class="k">def</span> <span class="nf">cohorts_fun</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">size</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    This function creates two lists with labels and cohort variable</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    start : int, optional</span>
+<span class="sd">        Starting year of birth, by default 1900</span>
+<span class="sd">    end : int, optional</span>
+<span class="sd">        Last year of birth, by default 2000</span>
+<span class="sd">    size : int, optional</span>
+<span class="sd">        Size of cohorts years window, by default 15</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    coh and cys</span>
+<span class="sd">        two lists with labels and cohort variable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">coh</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cys</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">co</span> <span class="o">=</span> <span class="s1">&#39;Cohort_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="n">size</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="n">cy</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; - &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">cys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cy</span><span class="p">)</span>
+        <span class="n">coh</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">co</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">coh</span><span class="p">,</span> <span class="n">cys</span>
+
+<span class="k">def</span> <span class="nf">coh_columns</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">coh</span><span class="p">,</span> <span class="n">cys</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">col_g_f</span><span class="p">,</span> <span class="n">col_g_m</span><span class="p">,</span> <span class="n">coh_all</span> <span class="o">=</span> <span class="p">[]):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    This function creates a data set with information based on the life cycle dataset</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : DataFrame</span>
+<span class="sd">        dataset used to create the new Dataframe</span>
+<span class="sd">    coh : list</span>
+<span class="sd">        Column name for cohorts in the lifecycle dataset (e.g.: &#39;Cohort_35_50&#39;)</span>
+<span class="sd">    cys : list</span>
+<span class="sd">        Label for cohorts (e.g.: &#39;1935 - 1950&#39;)</span>
+<span class="sd">    cols : list</span>
+<span class="sd">        columns where the information are seen in the lifecycle dataset</span>
+<span class="sd">    col_g_f : list</span>
+<span class="sd">        Colum for females </span>
+<span class="sd">    col_g_m : list</span>
+<span class="sd">        Colum for males </span>
+<span class="sd">    coh_all : list, optional</span>
+<span class="sd">        Empty list to append rows, by default []</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame</span>
+<span class="sd">        DataFrame with cohort level information </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coh</span><span class="p">):</span>
+        <span class="n">cohort</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">cohort_male</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cohort</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cohort</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">][</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="n">cohort_female</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cohort</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cohort</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">][</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="n">cohort</span> <span class="o">=</span> <span class="n">cohort</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span><span class="s1">&#39;published&#39;</span><span class="p">,</span><span class="s1">&#39;qt_published&#39;</span><span class="p">,</span><span class="s1">&#39;fic_and_nfic&#39;</span><span class="p">,</span><span class="s1">&#39;fiction&#39;</span><span class="p">,</span><span class="s1">&#39;non_fiction&#39;</span><span class="p">]]</span>
+        <span class="n">cohort</span> <span class="o">=</span> <span class="n">cohort</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;gender&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="n">cohort</span> <span class="o">=</span> <span class="n">cohort</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cohort</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">19</span><span class="p">]</span>
+        <span class="n">life_coh</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="n">cohort</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">sliced</span> <span class="o">=</span> <span class="n">cohort</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cohort</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">age</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">dic</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">dic</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">age</span>
+            <span class="k">for</span> <span class="n">c_nb</span><span class="p">,</span><span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+                <span class="n">dic</span><span class="p">[</span><span class="n">col_g_f</span><span class="p">[</span><span class="n">c_nb</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sliced</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sliced</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">][</span><span class="n">col</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">cohort_female</span>
+            <span class="n">dic_m</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">dic</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">age</span>
+            <span class="k">for</span> <span class="n">c_nb</span><span class="p">,</span><span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+                <span class="n">dic</span><span class="p">[</span><span class="n">col_g_m</span><span class="p">[</span><span class="n">c_nb</span><span class="p">]]</span> <span class="o">=</span> <span class="n">sliced</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sliced</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">][</span><span class="n">col</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">cohort_male</span>
+    <span class="c1">#        for c_nb,col in enumerate(cols):</span>
+    <span class="c1">#           dic[col_g_r[c_nb]] = (cohort_male/cohort_female)*(sliced.loc[sliced[&#39;gender&#39;] == &#39;female&#39;][col][0]/sliced.loc[sliced[&#39;gender&#39;] == &#39;male&#39;][col][1])</span>
+            <span class="n">dic</span><span class="p">[</span><span class="s1">&#39;Cohort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cys</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+            <span class="n">life_coh</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dic</span><span class="p">)</span>
+        <span class="n">coh_all</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">life_coh</span><span class="p">))</span>
+    <span class="n">coh_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">coh_all</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">coh_all</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>

@@ -105,5 +105,4 @@ plt.show()
 This will produce the following figure
 
 ```{figure} ../../../images/female_shares/p_female_shares_bs.png
-:name: figure-example
-```
+\```

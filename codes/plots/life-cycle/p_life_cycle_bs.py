@@ -11,6 +11,13 @@ import pandas as pd
 import seaborn as sns
 import p_func_life_cycle as plc
 from matplotlib import pyplot as plt
+
+plt.rcParams['figure.dpi'] = 500
+plt.rcParams['savefig.dpi'] = 500
+sns.set_style('ticks')
+sns.despine(left=False, bottom=True)
+sns.set_context("paper")
+
 '''
 
 # Plotting the life cycle graphs
@@ -126,12 +133,6 @@ age_group = age_group.loc[age_group['Ratio publishing'] != 0]
 Now, using coh_all, we call plot all the graphs
 
 '''
-# THIS MAKES THE GRAPH LOOKING GOOD
-plt.rcParams['figure.dpi'] = 500
-plt.rcParams['savefig.dpi'] = 500
-sns.set_style('ticks')
-sns.despine(left=False, bottom=True)
-sns.set_context("paper")
 
 colors = ['Purples','Blues']
 for c,g in enumerate(['Female', 'Male']):

@@ -1,3 +1,18 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # Life Cycle plottings
 
 In this routine we will plot the graphs related to authors life cycles for the [Library of Congress](https://www.loc.gov) and [New York Best sellers](https://www.nytimes.com/books/best-sellers/) datasets. We will plot two graphs:
@@ -10,7 +25,7 @@ These graphs will be ploted for three groups: All books, fiction and non fiction
 ## Packages needed
 
 ```{code-cell}
-:tags: ["hide-input"]
+:tags: ["hide-cell"]
 
 import os 
 import pandas as pd
@@ -18,6 +33,8 @@ import seaborn as sns
 import p_func_life_cycle as plc
 from matplotlib import pyplot as plt
 ```
+
+
 ## To make our graphs looking good
 To make your graphs looking better, we will use some predefined settings. You can customize it as you want. These
 are our settings.

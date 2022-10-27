@@ -10,4 +10,7 @@ parts:
       sections:
       - file: myst/plots/shares/p_female_shares.md
       - file: myst/plots/two_scales/p_two_scales.md
+    - file: myst/plots/life_cycles/p_life_cycle_intro.md
+      sections:
+      - file: myst/plots/life_cycles/p_life_cycle_bs.md
 

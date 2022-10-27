@@ -16,8 +16,8 @@ kernelspec:
 
 In this routine we will plot the female share for the [Library of Congress](https://www.loc.gov) and [New York Best sellers](https://www.nytimes.com/books/best-sellers/) dataset. We will plot two graphs:
 
-1. [Female share for fiction, non-fiction and all books](myst/plots/shares/p_female_shares.md)
-2. [Two scale graphs, with female share (left y-axis) and genre share (right x-axis)](myst/plots/two_scales/p_two_scales.md)
+1. [Female share for fiction, non-fiction and all books](/plots/shares/p_female_shares.md)
+2. [Two scale graphs, with female share (left y-axis) and genre share (right x-axis)](/plots/two_scales/p_two_scales.md)
 
 ## Packages needed
 

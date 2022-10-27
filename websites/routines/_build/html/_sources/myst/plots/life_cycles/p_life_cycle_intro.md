@@ -10,18 +10,18 @@ These graphs will be ploted for three groups: All books, fiction and non fiction
 ## Packages needed
 
 ```{code-cell}
-:tags: ["hide-cell"]
+:tags: ["hide-input"]
 
 import os 
 import pandas as pd
 import seaborn as sns
 import p_func_life_cycle as plc
 from matplotlib import pyplot as plt
-
 ```
 ## To make our graphs looking good
 To make your graphs looking better, we will use some predefined settings. You can customize it as you want. These
 are our settings.
+
 ```{code-cell}
 :tags: ["hide-cell"]
 
@@ -34,12 +34,13 @@ sns.set_context("paper")
 
 ```{warning}
 **p_func_life_cycle** is a file with the [functions](functions) used through the routines.
-
 ```
+
 (functions)=
 ## Functions
 
 These are the set of functions used in the following routine
+
 ```{code-cell}
 :tags: ["hide-input"]
 
@@ -157,5 +158,4 @@ def coh_columns(data, coh, cys, cols, col_g_f, col_g_m, coh_all = []):
         coh_all.append(pd.DataFrame(life_coh))
     coh_all = pd.concat(coh_all, axis = 0).reset_index().drop('index',axis=1)
     return coh_all
-
 ```

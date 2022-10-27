@@ -1,7 +1,7 @@
-# RA Juhn Authors Project
+# Authors Project - [website](https://angelosant0s.github.io/authors-project/md/intro.html)
 
-This repository contains projects related to research assistant work for Professor Chinhui Juhn at the University of Houston - Department of Economics
-You can our codes and outputs in this [link](https://angelosant0s.github.io/authors-project/md/intro.html)
+This repository contains projects related to research assistant work for Professor Chinhui Juhn at the University of Houston - Department of Economics.
+
 ## Description
 
 Authors with a book on the New York Times Best Seller list are top performers in the publishing industry. Recently, best-selling authors are one of the few high-profile professions with gender parity. Most other high earning or top performing careers are male dominated (CEOs, lawyers, surgeons, etc.) thus achieving gender parity in among the top one percent of a labor market is a rare phenomenon. Additionally, the gender composition of authors whose books were accepted into the United States Library of Congress under the fiction genre reached gender parity around 2008. 

@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Plotting two scales &#8212; Authors Project</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
@@ -55,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Life Cycle plottings" href="../life_cycles/p_life_cycle_intro.html" />
     <link rel="prev" title="Plotting female shares" href="../shares/p_female_shares.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -153,12 +154,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../life_cycles/p_life_cycle_bs.html">
-     NY best sellers life cycle graphs
+     NY best sellers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../life_cycles/p_life_cycle_loc.html">
-     Library of Congress life cycle graphs
+     Library of Congress
     </a>
    </li>
   </ul>
@@ -436,9 +437,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="plotting-two-scales">
-<h1>Plotting two scales<a class="headerlink" href="#plotting-two-scales" title="Permalink to this headline">#</a></h1>
+<h1>Plotting two scales<a class="headerlink" href="#plotting-two-scales" title="Permalink to this heading">#</a></h1>
 <section id="one-plot">
-<h2>One plot<a class="headerlink" href="#one-plot" title="Permalink to this headline">#</a></h2>
+<h2>One plot<a class="headerlink" href="#one-plot" title="Permalink to this heading">#</a></h2>
 <p>In this section, we will plot the female shares and the genre share for each year. We will plot these values in two scales graph, where the left y-axis is female share and the right x-axis is the genre share.</p>
 <p>Firs, we create a list with all the genres that we have use to categorize the fiction books.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fics</span> <span class="o">=</span> <span class="p">[</span>
@@ -509,7 +510,7 @@ title="Print to PDF"
 </figure>
 </section>
 <section id="separated-plots">
-<h2>Separated plots<a class="headerlink" href="#separated-plots" title="Permalink to this headline">#</a></h2>
+<h2>Separated plots<a class="headerlink" href="#separated-plots" title="Permalink to this heading">#</a></h2>
 <p>The following, plots a figure for each fiction genre.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fics</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s1">&#39;Action/Adventure&#39;</span><span class="p">,</span> 

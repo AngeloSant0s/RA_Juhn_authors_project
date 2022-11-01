@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # NY best sellers life cycle graphs 
+# # NY best sellers 
 # ## Uploading the NY best sellers life cycle dataset
 
 # In[1]:

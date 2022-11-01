@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Library of Congress life cycle graphs 
+# # Library of Congress 
 # 
 # If you redo the past exercise using the sample of library of congress, this will be the result. 
 # 

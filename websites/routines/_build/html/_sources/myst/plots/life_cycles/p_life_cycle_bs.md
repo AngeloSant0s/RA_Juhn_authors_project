@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# NY best sellers life cycle graphs 
+# NY best sellers 
 ## Uploading the NY best sellers life cycle dataset
 
 ```{code-cell}

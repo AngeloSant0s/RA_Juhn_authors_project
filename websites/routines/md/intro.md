@@ -6,5 +6,9 @@ In this project we explore data about book authors in the [New York Bestsellers]
 
 In this website you will find part of code routines and its outputs, as tables, dataset and plots. Feel free to give us feedbacks through this [link](mailto:angelofgdsantos@gmail.com,jcholbro@central.uh.edu).
 
+```{warning}
+This website is on construction and does not contain all the codes and exercises performed during the project.
+```
+
 ```{tableofcontents}
 ```

@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>NY best sellers life cycle graphs &#8212; Authors Project</title>
+    <title>NY best sellers &#8212; Authors Project</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -34,6 +34,7 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
@@ -52,10 +53,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Library of Congress life cycle graphs" href="p_life_cycle_loc.html" />
+    <link rel="next" title="Library of Congress" href="p_life_cycle_loc.html" />
     <link rel="prev" title="Life Cycle plottings" href="p_life_cycle_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -153,12 +154,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     NY best sellers life cycle graphs
+     NY best sellers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="p_life_cycle_loc.html">
-     Library of Congress life cycle graphs
+     Library of Congress
     </a>
    </li>
   </ul>
@@ -432,7 +433,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>NY best sellers life cycle graphs</h1>
+                <h1>NY best sellers</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -489,10 +490,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="ny-best-sellers-life-cycle-graphs">
-<h1>NY best sellers life cycle graphs<a class="headerlink" href="#ny-best-sellers-life-cycle-graphs" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ny-best-sellers">
+<h1>NY best sellers<a class="headerlink" href="#ny-best-sellers" title="Permalink to this heading">#</a></h1>
 <section id="uploading-the-ny-best-sellers-life-cycle-dataset">
-<h2>Uploading the NY best sellers life cycle dataset<a class="headerlink" href="#uploading-the-ny-best-sellers-life-cycle-dataset" title="Permalink to this headline">#</a></h2>
+<h2>Uploading the NY best sellers life cycle dataset<a class="headerlink" href="#uploading-the-ny-best-sellers-life-cycle-dataset" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span> 
@@ -552,7 +553,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="creting-dummies-for-the-cohorts-of-birth">
-<h2>Creting Dummies for the cohorts of birth<a class="headerlink" href="#creting-dummies-for-the-cohorts-of-birth" title="Permalink to this headline">#</a></h2>
+<h2>Creting Dummies for the cohorts of birth<a class="headerlink" href="#creting-dummies-for-the-cohorts-of-birth" title="Permalink to this heading">#</a></h2>
 <p>Using the dummies that we created, we will define a simple function that we will produce
 two lists.</p>
 <ul class="simple">
@@ -585,7 +586,7 @@ two lists.</p>
 </div>
 </section>
 <section id="creating-the-plotting-dataset">
-<h2>Creating the plotting dataset<a class="headerlink" href="#creating-the-plotting-dataset" title="Permalink to this headline">#</a></h2>
+<h2>Creating the plotting dataset<a class="headerlink" href="#creating-the-plotting-dataset" title="Permalink to this heading">#</a></h2>
 <p>We will use this in our plotting code. Now, define the columns for our plots, these are
 different life cycle plots that we can produce. We will plot the following for both men
 and women:</p>
@@ -650,9 +651,9 @@ for each cohort.</p>
 </div>
 </section>
 <section id="plotting-the-graphs">
-<h2>Plotting the graphs<a class="headerlink" href="#plotting-the-graphs" title="Permalink to this headline">#</a></h2>
+<h2>Plotting the graphs<a class="headerlink" href="#plotting-the-graphs" title="Permalink to this heading">#</a></h2>
 <section id="female-and-male-proobabilities-of-publishing">
-<h3>Female and Male proobabilities of publishing<a class="headerlink" href="#female-and-male-proobabilities-of-publishing" title="Permalink to this headline">#</a></h3>
+<h3>Female and Male proobabilities of publishing<a class="headerlink" href="#female-and-male-proobabilities-of-publishing" title="Permalink to this heading">#</a></h3>
 <p>Now, we call plot all the graphs</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span><span class="s1">&#39;Blues&#39;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">c</span><span class="p">,</span><span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">]):</span>
@@ -690,7 +691,7 @@ for each cohort.</p>
 </figure>
 </section>
 <section id="ratio">
-<h3>Ratio<a class="headerlink" href="#ratio" title="Permalink to this headline">#</a></h3>
+<h3>Ratio<a class="headerlink" href="#ratio" title="Permalink to this heading">#</a></h3>
 <p>Now, we can plot the ratios</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">age_group</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="s1">&#39;Ratio publishing&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Cohort&#39;</span><span class="p">,</span> <span class="n">palette</span> <span class="o">=</span> <span class="s1">&#39;Greys&#39;</span> <span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Ratio books Life Cycle&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Cohort&#39;</span><span class="p">)</span>
@@ -719,7 +720,7 @@ for each cohort.</p>
 </figure>
 </section>
 <section id="female-and-male-proobabilities-of-publishing-combined">
-<h3>Female and Male proobabilities of publishing combined<a class="headerlink" href="#female-and-male-proobabilities-of-publishing-combined" title="Permalink to this headline">#</a></h3>
+<h3>Female and Male proobabilities of publishing combined<a class="headerlink" href="#female-and-male-proobabilities-of-publishing-combined" title="Permalink to this heading">#</a></h3>
 <p>In conclusion, we can combine female and male probabilities in one graph.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">col_g_f</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Female probability of publishing&#39;</span><span class="p">,</span>
             <span class="s1">&#39;Female probability of publishing fiction&#39;</span><span class="p">,</span>
@@ -802,7 +803,7 @@ for each cohort.</p>
     <a class='right-next' id="next-link" href="p_life_cycle_loc.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Library of Congress life cycle graphs</p>
+        <p class="prev-next-title">Library of Congress</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
